@@ -12,9 +12,10 @@ module TechlogApp
     config.load_defaults 8.0
     config.autoload_lib(ignore: %w[assets tasks])
 
-    config.generaters do |g|
-      g.asset false
+    config.generators do |g|
+      g.assets false
       g.helper false
       g.test_framework :rspec
-    end 
+    end
+  end
 end
