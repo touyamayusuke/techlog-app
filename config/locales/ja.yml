@@ -1,0 +1,8 @@
+ja:
+  posts:
+    create:
+      success: "投稿しました"
+      failure: "投稿に失敗しました"
+    destroy:
+      success: "投稿が削除されました"
+      failure: "他のユーザーの投稿は削除できません"
