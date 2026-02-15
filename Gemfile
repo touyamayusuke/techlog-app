@@ -63,10 +63,16 @@ group :development do
   gem 'rubocop-rails', require: false # 追加
   gem 'rubocop-rspec' # 追加
   gem 'web-console'
+  gem 'spring-commands-rspec' # 追記
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+end
+
+group :development, :test do
+  gem 'rspec-rails' # 追加
+  gem 'factory_bot_rails' # 追加
 end
