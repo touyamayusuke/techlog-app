@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
-load File.expand_path("spring", __dir__)
+
+if ENV["USE_SPRING"] == "1"
+	load File.expand_path("spring", __dir__)
+end
+
 require 'bundler/setup'
 load Gem.bin_path('rspec-core', 'rspec')
