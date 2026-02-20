@@ -3,15 +3,29 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: sqlite3
-  database: storage/development.sqlite3
-  <<: *default
+  primary:
+    adapter: sqlite3
+    database: storage/development.sqlite3
+    <<: *default
+  queue:
+    adapter: sqlite3
+    database: storage/development.sqlite3
+    <<: *default
 
 test:
-  adapter: sqlite3
-  database: storage/test.sqlite3
-  <<: *default
+  primary:
+    adapter: sqlite3
+    database: storage/test.sqlite3
+    <<: *default
+  queue:
+    adapter: sqlite3
+    database: storage/test.sqlite3
+    <<: *default
 
 production:
-  url: <%= ENV.fetch("DATABASE_URL") %>
-  <<: *default
+  primary:
+    url: <%= ENV["DATABASE_URL"] %>
+    <<: *default
+  queue:
+    url: <%= ENV["DATABASE_URL"] %>
+    <<: *default
