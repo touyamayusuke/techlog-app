@@ -1,5 +1,5 @@
 default: &default
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 3) %>
   timeout: 5000
 
 development:
@@ -8,6 +8,14 @@ development:
     database: storage/development.sqlite3
     <<: *default
   queue:
+    adapter: sqlite3
+    database: storage/development.sqlite3
+    <<: *default
+  cache:
+    adapter: sqlite3
+    database: storage/development.sqlite3
+    <<: *default
+  cable:
     adapter: sqlite3
     database: storage/development.sqlite3
     <<: *default
@@ -21,11 +29,25 @@ test:
     adapter: sqlite3
     database: storage/test.sqlite3
     <<: *default
+  cache:
+    adapter: sqlite3
+    database: storage/test.sqlite3
+    <<: *default
+  cable:
+    adapter: sqlite3
+    database: storage/test.sqlite3
+    <<: *default
 
 production:
   primary:
     url: <%= ENV["DATABASE_URL"] %>
     <<: *default
   queue:
+    url: <%= ENV["DATABASE_URL"] %>
+    <<: *default
+  cache:
+    url: <%= ENV["DATABASE_URL"] %>
+    <<: *default
+  cable:
     url: <%= ENV["DATABASE_URL"] %>
     <<: *default
